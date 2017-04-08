@@ -1,50 +1,32 @@
 import React, {PropTypes} from 'react'
-import {Grid, Col, Row, Button, Well, Panel} from 'react-bootstrap'
+import {Grid, Col, Row, Button, Well, Panel, Thumbnail} from 'react-bootstrap'
 import { Card, CardImg, CardText, CardBlock,
-  CardTitle, CardSubtitle,CardGroup, ButtonStrap } from 'reactstrap';
+  CardTitle, CardSubtitle,CardGroup, ButtonStrap } from 'reactstrap'
+import FontAwesome from 'react-fontawesome'
 
-const Holder = () => {
+
+const Holder = ({toEvents, toCommunities, toKM}) => {
     return(
         <Row>
-        <Col xs={6}>
-        <Panel>
-        <Card style={{backgroundColor:"aqua"}}>
-        <CardBlock>
-          <CardTitle>Events</CardTitle>
-          <CardSubtitle>Details of Events</CardSubtitle>
-        </CardBlock>           
+        <Col xs={6} >
+        <Card  onClick={toEvents} style={{backgroundColor:'#cadbf7'}}>
+          <CardTitle><FontAwesome name='calendar' size="lg" style={{padding:'0.5em 0.5em 0.5em 0.5em'}} />Events</CardTitle>
         </Card>
-        </Panel>
         </Col>
-        <Col xs={6}>
-        <Panel>
-        <Card style={{backgroundColor:"gray"}}>
-        <CardBlock>
-          <CardTitle><a>Knowledge</a></CardTitle>
-          <CardSubtitle>Knowledge Management</CardSubtitle>
-        </CardBlock>
+        <Col xs={6} >
+        <Card style={{backgroundColor:'#bafcf0'}}>
+          <CardTitle><FontAwesome name='stethoscope' size="lg" style={{padding:'0.5em 0.5em 0.5em 0.5em'}}/>Knowledge</CardTitle>
           </Card>
-        </Panel>           
           </Col>
-        <Col xs={6}>
-        <Panel>
-        <Card style={{backgroundColor:"#FF5733"}}>
-        <CardBlock>
-          <CardTitle>Communities</CardTitle>
-          <CardSubtitle>Discussions and Events for Communities</CardSubtitle>
-        </CardBlock>           
+        <Col xs={6} style={{paddingTop:'0.5em'}}>
+        <Card onClick={toCommunities} style={{backgroundColor:'#c0dbd6'}}>
+          <CardTitle><FontAwesome name='connectdevelop' size="lg" style={{padding:'0.5em 0.5em 0.5em 0.5em'}}/>Communities</CardTitle>
         </Card>
-        </Panel>
         </Col>
-        <Col xs={6}>
-        <Panel>
-        <Card style={{backgroundColor:"#DAF7A6"}}>
-        <CardBlock>
-          <CardTitle><a>Others</a></CardTitle>
-          <CardSubtitle>Random Discussions and Polls</CardSubtitle>
-        </CardBlock>
+        <Col xs={6} style={{paddingTop:'0.5em'}}>
+        <Card style={{backgroundColor:'#efaabc'}}>
+          <CardTitle><FontAwesome name='rocket' size="lg" style={{padding:'0.5em 0.5em 0.5em 0.5em'}}/>Others</CardTitle>
           </Card>
-        </Panel>           
           </Col> 
           </Row>         
  

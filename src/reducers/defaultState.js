@@ -9,10 +9,19 @@ isUserAuthenticated: false,
 isFetching: false, 
 details: {}
 },
+search: {
+        text:''
+},
 posts: {isFetchingPosts: false,
         isPostingComment: false,
         post_details:[]},
-communities: [],
-events: [],
-lastUpdated: Date.now()
+communities: {
+        isFetchingCommunities: false,
+        community_details: []
+},
+events: {
+        filterEvents: '',
+        isFetchingEvents: false,
+        event_details: []
+}
 })

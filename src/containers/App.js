@@ -30,13 +30,13 @@ class App extends Component {
     const {posts} = this.props
     return (
       <div>
-       <Row className='show-grid'>
+       <Row className='show-grid' style={{paddingBottom:'.5em'}}>
           <Col xs={12}>
             {< PostSingle posts = {posts} showBlog = {this.props.showBlog} />}
           </Col>
         </Row>
-        <div >
-          <Holder />
+        <div>
+          <Holder toEvents = {this.props.showEvents} toCommunities = {this.props.showCommunities} toKM = {this.props.showKM} />
         </div>
         </div>
 
@@ -72,6 +72,15 @@ const mapDispatchToProps = (dispatch) => {
       e.preventDefault()
       let blogId = e.target.attributes.getNamedItem('data-blog')
       hashHistory.push(`/blog/${blogId.value}`)
+    },
+    showEvents: () => {
+      hashHistory.push('/events')
+    },
+    showCommunities: () => {
+      hashHistory.push('/communities')
+    },
+    showKM: () => {
+      hashHistory.push('/km')
     }
     // postComment: postId => comment => {   //  Temp   let userid = 1   let
     // activityid = postId   let content = comment   event.preventDefault()   if

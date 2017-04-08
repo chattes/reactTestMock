@@ -42,7 +42,46 @@ const posts = (state = defaultState.get('posts'), action) => {
         return state
     }
 }
+const events = (state = defaultState.get('events'), action) => {
+    switch(action.type){
+        case Actions.REQUEST_EVENTS:
+        let dataIn = fromJS({isFetchingEvents:true})
+        return state.mergeDeep(dataIn)
+        case Actions.RECEIVE_EVENTS:
+        let eventsIn = fromJS({isFetchingEvents: false,
+                           event_details: fromJS(action.data)})
+        let newState = state.mergeDeep(eventsIn)
+        return newState
+        default:
+        return state
+    }
+}
+const communities = (state = defaultState.get('communities'), action) => {
+    switch(action.type){
+        case Actions.REQUEST_COMMUNITY:
+        let dataIn = fromJS({isFetchingCommunities:true})
+        return state.mergeDeep(dataIn)
+        case Actions.RECEIVE_COMMUNITY:
+        let communitiesIn = fromJS({isFetchingCommunities: false,
+                           community_details: fromJS(action.data)})
+        let newState = state.mergeDeep(communitiesIn)
+        return newState
+        default:
+        return state
+    }
+}
+const search = (state = defaultState.get('search'), action) => {
+    switch(action.type){
+        case Actions.UPDATE_SEARCH_TEXT:
+        return state.merge({text:action.text})
+        default:
+        return state
+    }
+}
 export default combineReducers({
     userProfile,
-    posts
+    posts,
+    events,
+    communities,
+    search
 })

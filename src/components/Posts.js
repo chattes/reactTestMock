@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react'
 import Immutable from 'immutable'
-import {Carousel, Button} from 'react-bootstrap'
+import {Carousel, Button, Image} from 'react-bootstrap'
 import {FontAwesome} from 'react-fontawesome'
 
 const PostSingle = ({posts, showBlog}) => {
@@ -17,7 +17,7 @@ const PostSingle = ({posts, showBlog}) => {
 
                     <Carousel
                         style={{
-                        backgroundColor: "purple"
+                        backgroundColor: "black"
                     }}>
                         {posts
                             .get('post_details')
@@ -26,7 +26,7 @@ const PostSingle = ({posts, showBlog}) => {
                                 return (
 
                                     <Carousel.Item animateIn={true} animateOut={true}>
-                                        <img width={400} height={200} src={post.get('image')}/>
+                                        <Image width={700} height={600} src={post.get('image')}/>
                                         <Carousel.Caption>
                                             <h3>{post.get('title')}</h3>
                                             <p
