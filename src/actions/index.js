@@ -1,11 +1,9 @@
 import $ from 'jquery'
-const base64 = require('base-64')
 var headers = new Headers({
     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
     "Content-Length": "content.length.toString()",
     "X-Custom-Header": "ProcessThisImmediately"
 })
-headers.append("Authorization", "Basic " + base64.encode("admin:admin"))
 export const Actions = {
     REQUEST_USER: 'REQUEST_USER',
     RECEIVE_USER: 'RECEIVE_USER',
@@ -148,45 +146,4 @@ export const fetchEvents = () => dispatch => {
     })
 
 }
-export const addCommentToPost = postData => dispatch => {
 
-    let url = `http://192.168.31.137/api/buddypressread/activity_comments_add_edit`
-    let request = new Request(url, {
-        method: 'POST',
-        headers: headers,
-        credentials: 'include',
-        body: JSON.stringify(postData)
-        // mode:'cors'
-    })
-    dispatch(postComment(postData.activityid))
-    // return fetch(request).then(
-    //     response => response.json()
-    // ).then(
-    //     json => dispatch(postCommentFailure(json))
-
-    // ).catch(
-    //     error => dispatch(postCommentFailure(error))
-    // )
-    postData.pw = 'admin'
-    return $.ajax({
-        type: 'POST',
-        url: url,
-        username: 'admin',
-        password: 'admin',
-        data: postData,
-        success: (data) => {
-            if (!data.error) {
-                dispatch(postCommentSuccess(data))
-                // Refresh
-                dispatch(fetchPosts())
-
-            } else {
-                dispatch(postCommentFailure(data.error))
-            }
-        },
-        error: (xhr, ajaxOptions, error) => {
-            dispatch(postCommentFailure(error))
-        }
-    })
-
-}
